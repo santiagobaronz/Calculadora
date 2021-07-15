@@ -1,0 +1,141 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Brandon Text,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+
+}
+
+
+body{
+    width: 100%;
+    height: 100%;
+    background: rgb(157,210,184);
+    background: linear-gradient(40deg, rgba(157,210,184,1) 0%, rgba(147,223,211,1) 100%);
+    overflow: hidden;
+}
+
+.calculadora{
+    position: relative;
+    width: 65%;
+    height: 750px;
+    margin: 0 auto;
+    margin-top: 75px;
+    margin-bottom: 500px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 1px 1px 100px rgb(0 0 0 / 30%);
+}
+
+.calculadora h1{
+    text-align: center;
+    text-transform: uppercase;
+    color: #333;
+    font-size: 50px;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+.calculadora input{
+    font-size: 20px;
+    position: relative;
+    padding-left: 30px;
+    width: 100%;
+    height: 70px;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+}
+
+.numbers{
+    float: left;
+}
+
+.numbers{
+    width: 80%;
+    padding-right: 10px;
+}
+
+.operations{
+    float: right;
+    width: 20%;
+}
+
+.numbers button, .operations button{
+    position: relative;
+    display: inline-block;
+    width: 105px;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.numbers button:active{
+    width: 100px;
+    height: 95px;
+}
+
+.operations button:active{
+    width: 100px;
+    height: 95px;
+}
+
+.numbers button, .operations button{
+    border: 1px solid rgba(233, 233, 233, 0.89);
+    outline: none;
+    cursor: pointer;
+    border-radius: 7px;
+    font-size: 25px;
+    color: #333;
+    font-weight: 600;
+}
+
+.input-box{
+    position: relative;
+}
+
+#past-numbers{
+    position: absolute;
+    top: 23px;
+    right: 30px;
+    color: #ccc
+}
+
+#section-calculadora{
+    float: left;
+    width: 50%;
+}
+
+
+#section-credits{
+    width: 100%;
+    height: 100%;
+}
+
+#section-credits p {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-size: 100px;
+    text-align: left;
+    font-weight: bold;
+    margin-right: 200px;
+    padding-bottom: 40px;
+    border-bottom: 10px solid #fff;
+    transform: translateY(50%);
+    text-shadow: 1px 1px 100px rgb(0 0 0 / 30%);
+}
+
+#section-credits p::after{
+    content: 'Realizado el dia 15/07/2021';
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    font-size: 30px;
+    font-weight: 600;
+    font-style: italic;
+    text-shadow: 1px 1px 100px rgb(0 0 0 / 30%);
+}
