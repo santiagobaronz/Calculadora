@@ -10,8 +10,8 @@
 body{
     width: 100%;
     height: 100%;
-    background: rgb(157,210,184);
-    background: linear-gradient(40deg, rgba(157,210,184,1) 0%, rgba(147,223,211,1) 100%);
+    background: rgb(45,88,255);
+    background: linear-gradient(158deg, rgba(45,88,255,1) 0%, rgba(4,16,113,1) 100%);
     overflow: hidden;
 }
 
@@ -130,11 +130,11 @@ body{
 }
 
 #section-credits p::after{
-    content: 'Realizado el dia 15/07/2021';
+    content: 'Realizado el día 15/07/2021 | Última actualización: 24/07/2021';
     position: absolute;
-    bottom: -80px;
+    bottom: -120px;
     left: 0;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 600;
     font-style: italic;
     text-shadow: 1px 1px 100px rgb(0 0 0 / 30%);

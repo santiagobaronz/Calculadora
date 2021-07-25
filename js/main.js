@@ -3,10 +3,19 @@
 
 window.addEventListener('load',function(){
 
-    // Variables
+    // Input variables and aggregated numbers
 
     var input = document.querySelector("#input-calculadora");
     var numbers_on_screen = document.querySelector("#past-numbers");
+
+    // Variables que seran reemplazadas por los valores ingresados
+
+    var numero1 = 0;
+    var numero2 = 0;
+    var operacion = "";
+    var numero_completo = "";
+
+    // Button variables with numbers
 
     var number0 = document.querySelector("#numero0");
     var number1 = document.querySelector("#numero1");
@@ -20,6 +29,8 @@ window.addEventListener('load',function(){
     var number9 = document.querySelector("#numero9");
     var operate = document.querySelector("#operate");
 
+    // Button variables with operations
+
     var sumar = document.querySelector("#sumar");
     var restar = document.querySelector("#restar");
     var dividir = document.querySelector("#dividir");
@@ -27,7 +38,7 @@ window.addEventListener('load',function(){
     var ce = document.querySelector("#ce");
 
 
-    // Eventos de numeros
+    // Number events
 
     number0.addEventListener("click", function(){ MostrarNumero(this)});
     number1.addEventListener("click", function(){ MostrarNumero(this)});
@@ -40,33 +51,27 @@ window.addEventListener('load',function(){
     number8.addEventListener("click", function(){ MostrarNumero(this)});
     number9.addEventListener("click", function(){ MostrarNumero(this)});
 
+    // Eventos de los botones de operaciones
+
     sumar.addEventListener("click",function(){ Operacion("+") });
     restar.addEventListener("click",function(){ Operacion("-") });
     dividir.addEventListener("click",function(){ Operacion("/") });
-    multiplicar.addEventListener("click",function(){ Operacion("*") });
+    multiplicar.addEventListener("click",function(){ Operacion("x") });
     ce.addEventListener("click", EliminarTodo);
 
-
+    // Operation Button Events
 
     operate.addEventListener("click", function(){ OperarNumeros()});
 
-
-    // Logica de la calculadora
-
-    var numero1 = 0;
-    var numero2 = 0;
-    var operacion = "";
-
-    var numero_completo = "";
-
-
-    // Funcion que recoje el numero seleccionado y lo muestra por pantalla en el input
+    // Function that collects the selected number and shows it on the screen in the input
 
     function MostrarNumero(number){
         let number_to_show = number.innerHTML;
         numero_completo = numero_completo +""+ number_to_show;
         input.value = numero_completo;
     }
+
+    // Function that eliminates assigned values ​​and what is displayed on the screen
 
     function EliminarTodo(){
         numero1 = 0;
@@ -77,29 +82,45 @@ window.addEventListener('load',function(){
         input.value = '';
     }
 
+    // Function to hide number that appears on screen. It is used when the Operation () function is applied
+
     function OcultarNumero(){
         numero_completo = '';
         input.value = '';
     }
 
+    // Operation Function. In charge of verifying if there is a number in the input and if this number should be stored 
+    // in the variable number1 or in number2. Additionally, it has the necessary logic to know if once the mathematical 
+    // operation has been carried out and has been as a result 0, do not have problems with the assignment
+
     function Operacion(simbolo){
         if(numero_completo != ''){
             if(numero1 == 0){
-                numero1 = parseFloat(numero_completo);
-                numbers_on_screen.innerHTML = numero1;
-                operacion = simbolo;
-                OcultarNumero();
+
+                if(numero1 == 0 && numero_completo == "0"){
+                    numero1 = 0;
+                    numbers_on_screen.innerHTML = numero1 + ' ' + simbolo;
+                    operacion = simbolo;
+                    OcultarNumero();
+                }else{
+                    numero1 = parseFloat(numero_completo);
+                    numbers_on_screen.innerHTML = numero1 + ' ' + simbolo;
+                    operacion = simbolo;
+                    OcultarNumero();
+                }
             }else{
                 OcultarNumero();
-                numbers_on_screen.innerHTML = numero1;
+                numbers_on_screen.innerHTML = numero1 + ' ' + simbolo;
                 operacion = simbolo;
             }
         }
     }
 
+    // Main function that operates the numbers stored in the variables number1, number2 and their symbol.
+
     function OperarNumeros(){
         numbers_on_screen.innerHTML = '';
-        if(numero1 > 0 && input.value.length > 0){
+        if(numero1 != 0 && input.value.length != 0){
             numero2 = parseFloat(input.value);
 
             switch(operacion){
@@ -112,18 +133,17 @@ window.addEventListener('load',function(){
                 case "/":
                     input.value = numero1 / numero2;
                     break;
-                case "*":
+                case "x":
                     input.value = numero1 * numero2;
                     break;
             }
 
-            numero1 = parseInt(input.value);
+            numero1 = parseFloat(input.value);
+            numero_completo = numero1.toString();
             numero2 = 0;
             operacion = "";
 
         }
     }
-
-    
 
 });
